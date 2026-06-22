@@ -1,1 +1,135 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shania Siew — Developer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+ 
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <span class="nav-logo">Shania Siew<span class="dot">.</span></span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+ 
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Hi, I'm</p>
+      <h1 class="hero-name">
+        <span id="typed-name"></span><span class="cursor">|</span>
+      </h1>
+      <p class="hero-role">Aspiring Developer &amp; Lifelong Learner</p>
+      <p class="hero-sub">I build clean, simple things for the web. Currently completing an internship and learning every day.</p>
+      <div class="hero-actions">
+        <a href="#about" class="btn-primary">About Me</a>
+        <a href="#contact" class="btn-ghost">Contact</a>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>A bit about me</h2>
+          <p>I'm a developer in training, passionate about turning ideas into things that actually work in the browser. I enjoy the problem-solving side of coding as much as the building side.</p>
+          <p>Right now I'm focused on strengthening my fundamentals in HTML, CSS, and JavaScript while exploring what comes next.</p>
+        </div>
+        <div class="about-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Python</span>
+          <span class="tag">Git</span>
+          <span class="tag">VS Code</span>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <p class="section-label">Skills</p>
+      <h2 class="section-title">What I'm working with</h2>
+      <div class="skill-list">
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">HTML &amp; CSS</span><span class="skill-pct">0%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-target="88"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">JavaScript</span><span class="skill-pct">0%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-target="72"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Python</span><span class="skill-pct">0%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-target="78"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Git &amp; GitHub</span><span class="skill-pct">0%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-target="80"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Problem Solving</span><span class="skill-pct">0%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-target="85"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Get in touch</h2>
+      <div class="contact-grid">
+        <div class="contact-left">
+          <p>I'm open to work or internship opportunities, feedback on my work, or just a conversation about tech.</p>
+          <div class="contact-links">
+            <a href="mailto: shaniasiew14@gmail.com" class="contact-item">✉ shaniasiew14@gmail.com</a>
+            <a href="https://github.com/esnotme" target="_blank" class="contact-item">⌥ github.com/esnotme</a>
+            <a href="https://www.linkedin.com/in/shania-siew/" target="_blank" class="contact-item">◈ https://www.linkedin.com/in/shania-siew </a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Say hello…"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" id="submitBtn">Send Message</button>
+          <p class="form-status" id="formStatus"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+ 
+  <footer>
+    <p>© 2026 Shania Siew — Built with HTML, CSS &amp; JavaScript</p>
+  </footer>
+ 
+  <script src="script.js"></script>
+</body>
+</html>
+ 
