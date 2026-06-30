@@ -9,19 +9,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
-<body>
+<body class="dark">
  
   <!-- NAV -->
   <nav id="nav">
     <div class="nav-inner">
       <span class="nav-logo">Shania Siew<span class="dot">.</span></span>
       <ul class="nav-links">
+        <button class="close-nav" id="closeNav">×</button>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li>
+          <button id="themeToggle" class="theme-toggle">🌙</button>
+        </li>
       </ul>
     </div>
   </nav>
+
+  <!-- MOBILE MENU BUTTON -->
+<div class="menu-toggle" id="menuToggle">☰</div>
  
 <!-- HERO -->
 <section id="hero">
@@ -139,6 +147,65 @@
     <!-- RIGHT SIDE (IMAGE) -->
     <div class="skills-right">
       <img src="skills.png" alt="Code screenshot showing portfolio project" />
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+
+    <p class="section-label">Projects</p>
+    <h2 class="section-title">What I’ve built</h2>
+
+    <div class="projects-grid">
+
+      <!-- Loan Form -->
+      <div class="project-card">
+        <h3>Loan Application Form (Frontend)</h3>
+        <p>Built the frontend of an 8-step loan application form with structured multi-step navigation and validation-ready UI flow.</p>
+        <div class="tags">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+        </div>
+      </div>
+
+      <!-- Incentive System -->
+      <div class="project-card">
+        <h3>Student Incentive & Volunteer Tracking System</h3>
+        <p>Full-stack team project where I led development of a system for tracking volunteer hours, reward points, and student milestones using a Python Flask backend and REST APIs.</p>
+        <div class="tags">
+          <span>Python</span>
+          <span>Flask</span>
+          <span>Full Stack</span>
+          <span>Git</span>
+        </div>
+      </div>
+
+      <!-- HR Analytics -->
+      <div class="project-card">
+        <h3>Workforce Intelligence – HR Analytics System</h3>
+        <p>Final year data science project focused on employee attrition prediction using machine learning, explainable AI (SHAP), and fairness evaluation.</p>
+        <div class="tags">
+          <span>Python</span>
+          <span>Machine Learning</span>
+          <span>Data Science</span>
+        </div>
+      </div>
+
+      <!-- Stock Prediction -->
+      <div class="project-card">
+        <h3>Stock Market Prediction System</h3>
+        <p>Machine learning forecasting system using financial time-series data combined with external economic indicators for improved prediction accuracy.</p>
+        <div class="tags">
+          <span>Python</span>
+          <span>ML</span>
+          <span>Data Analysis</span>
+        </div>
+      </div>
+
     </div>
 
   </div>
