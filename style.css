@@ -847,3 +847,79 @@ pointer-events:auto;
 .top-btn:hover {
 transform:translateY(-3px);
 }
+
+.code-particles span {
+  position: absolute;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: rgba(99,102,241,0.25);
+  animation: floatCode 18s linear infinite;
+  white-space: nowrap;
+}
+
+
+.code-particles span:nth-child(1) {
+  left:10%;
+  animation-delay:0s;
+}
+
+.code-particles span:nth-child(2) {
+  left:25%;
+  animation-delay:3s;
+}
+
+.code-particles span:nth-child(3) {
+  left:45%;
+  animation-delay:6s;
+}
+
+.code-particles span:nth-child(4) {
+  left:65%;
+  animation-delay:2s;
+}
+
+.code-particles span:nth-child(5) {
+  left:80%;
+  animation-delay:8s;
+}
+
+.code-particles span:nth-child(6) {
+  left:35%;
+  animation-delay:10s;
+}
+
+.code-particles span:nth-child(7) {
+  left:55%;
+  animation-delay:12s;
+}
+
+
+@keyframes floatCode {
+
+  from {
+    transform:translateY(110vh);
+    opacity:0;
+  }
+
+  20% {
+    opacity:1;
+  }
+
+  80% {
+    opacity:1;
+  }
+
+  to {
+    transform:translateY(-20vh);
+    opacity:0;
+  }
+
+}
+
+
+#mouseTrail {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}

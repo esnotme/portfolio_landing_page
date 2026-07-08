@@ -300,3 +300,83 @@ behavior:"smooth"
 });
 
 });
+
+const trailCanvas = document.getElementById("mouseTrail");
+const trailCtx = trailCanvas.getContext("2d");
+
+trailCanvas.width = window.innerWidth;
+trailCanvas.height = window.innerHeight;
+
+
+window.addEventListener("resize", () => {
+  trailCanvas.width = window.innerWidth;
+  trailCanvas.height = window.innerHeight;
+});
+
+
+let trail = [];
+
+document.addEventListener("mousemove", (e) => {
+
+  trail.push({
+    x: e.clientX,
+    y: e.clientY,
+    size: 5,
+    opacity: 0.5
+  });
+
+});
+
+
+function drawTrail(){
+
+  trailCtx.clearRect(
+    0,
+    0,
+    trailCanvas.width,
+    trailCanvas.height
+  );
+
+
+  trail.forEach((point)=>{
+
+    trailCtx.beginPath();
+
+    trailCtx.arc(
+      point.x,
+      point.y,
+      point.size,
+      0,
+      Math.PI * 2
+    );
+
+
+    trailCtx.fillStyle =
+      `rgba(129,140,248,${point.opacity})`;
+
+
+    trailCtx.shadowBlur = 5;
+    trailCtx.shadowColor =
+      "rgba(169, 177, 249, 0.8)";
+
+
+    trailCtx.fill();
+
+
+    point.size *= 0.92;
+    point.opacity *= 0.85;
+
+  });
+
+
+  trail = trail.filter(
+    p => p.opacity > 0.03
+  );
+
+
+  requestAnimationFrame(drawTrail);
+
+}
+
+
+drawTrail();
