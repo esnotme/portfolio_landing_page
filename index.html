@@ -10,64 +10,74 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body class="dark">
- 
+
+  <!-- Animated Background -->
+<div class="background-animation">
+  <span class="glow glow-1"></span>
+  <span class="glow glow-2"></span>
+  <span class="glow glow-3"></span>
+  
+</div>
+
+  <!-- NAV OVERLAY (mobile backdrop) -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
   <!-- NAV -->
   <nav id="nav">
     <div class="nav-inner">
       <span class="nav-logo">Shania Siew<span class="dot">.</span></span>
-      <ul class="nav-links">
-        <button class="close-nav" id="closeNav">×</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li class="nav-close"><button class="close-nav" id="closeNav" aria-label="Close menu">×</button></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
         <li>
-          <button id="themeToggle" class="theme-toggle">🌙</button>
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
         </li>
       </ul>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
     </div>
   </nav>
 
-  <!-- MOBILE MENU BUTTON -->
-<div class="menu-toggle" id="menuToggle">☰</div>
- 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-inner">
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
 
-    <!-- LEFT SIDE (TEXT) -->
-    <div class="hero-content">
-      <p class="hero-eyebrow">Hi, I'm</p>
-
-      <h1 class="hero-name">
-        <span id="typed-name"></span><span class="cursor">|</span>
-      </h1>
-
-      <p class="hero-role">Aspiring Developer &amp; Lifelong Learner</p>
-
-      <p class="hero-sub">
-        I build clean, simple things for the web. Currently completing an internship and learning every day.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#about" class="btn-primary">About Me</a>
-        <a href="#contact" class="btn-ghost">Contact</a>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Hi, I'm</p>
+        <h1 class="hero-name">
+          <span id="typed-name"></span><span class="cursor">|</span>
+        </h1>
+        <p class="hero-role">Aspiring Developer &amp; Lifelong Learner</p>
+        <p class="hero-sub">
+          I build clean, simple things for the web. Currently completing an internship and learning every day.
+        </p>
+        <div class="hero-actions">
+          <a href="#about" class="btn-primary">About Me</a>
+          <a href="#contact" class="btn-ghost">Contact</a>
+          <!-- RESUME DOWNLOAD BUTTON -->
+          <a href="resume.pdf" download class="btn-resume" id="resumeBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Resume
+          </a>
+        </div>
       </div>
-    </div>
 
-    <!-- RIGHT SIDE (IMAGE) -->
-    <div class="hero-image">
-      <img src="hero.png" alt="Hero Image" />
-    </div>
+      <div class="hero-image">
+        <img src="hero.png" alt="Shania Siew" />
+      </div>
 
-  </div>
-</section>
- 
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section id="about">
     <div class="section-inner">
       <p class="section-label">About</p>
-      <div class="about-grid">
+      <div class="about-grid reveal">
         <div class="about-text">
           <h2>A bit about me</h2>
           <p>I'm a developer in training, passionate about turning ideas into things that actually work in the browser. I enjoy the problem-solving side of coding as much as the building side.</p>
@@ -84,167 +94,169 @@
       </div>
     </div>
   </section>
- 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-inner skills-inner">
 
-    <!-- LEFT SIDE -->
-    <div class="skills-left">
-      <p class="section-label">Skills</p>
-      <h2 class="section-title">Skills in development</h2>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner skills-inner">
 
-      <div class="skill-list">
-
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name">HTML & CSS</span>
+      <div class="skills-left reveal">
+        <p class="section-label">Skills</p>
+        <h2 class="section-title">Skills in development</h2>
+        <div class="skill-list">
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name">HTML &amp; CSS</span>
+              <span class="skill-pct">0%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" data-target="88"></div></div>
           </div>
-          <div class="skill-track">
-            <div class="skill-fill" data-target="88"></div>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-pct">0%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" data-target="72"></div></div>
           </div>
-        </div>
-
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name">JavaScript</span>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name">Python</span>
+              <span class="skill-pct">0%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" data-target="78"></div></div>
           </div>
-          <div class="skill-track">
-            <div class="skill-fill" data-target="72"></div>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name">Git &amp; GitHub</span>
+              <span class="skill-pct">0%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" data-target="80"></div></div>
           </div>
-        </div>
-
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name">Python</span>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name">Problem Solving</span>
+              <span class="skill-pct">0%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" data-target="85"></div></div>
           </div>
-          <div class="skill-track">
-            <div class="skill-fill" data-target="78"></div>
-          </div>
-        </div>
-
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name">Git & GitHub</span>
-          </div>
-          <div class="skill-track">
-            <div class="skill-fill" data-target="80"></div>
-          </div>
-        </div>
-
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name">Problem Solving</span>
-          </div>
-          <div class="skill-track">
-            <div class="skill-fill" data-target="85"></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- RIGHT SIDE (IMAGE) -->
-    <div class="skills-right">
-      <img src="skills.png" alt="Code screenshot showing portfolio project" />
-    </div>
-
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-inner">
-
-    <p class="section-label">Projects</p>
-    <h2 class="section-title">What I’ve built</h2>
-
-    <div class="projects-grid">
-
-      <!-- Loan Form -->
-      <div class="project-card">
-        <h3>Loan Application Form (Frontend)</h3>
-        <p>Built the frontend of an 8-step loan application form with structured multi-step navigation and validation-ready UI flow.</p>
-        <div class="tags">
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>JavaScript</span>
         </div>
       </div>
 
-      <!-- Incentive System -->
-      <div class="project-card">
-        <h3>Student Incentive & Volunteer Tracking System</h3>
-        <p>Full-stack team project where I led development of a system for tracking volunteer hours, reward points, and student milestones using a Python Flask backend and REST APIs.</p>
-        <div class="tags">
-          <span>Python</span>
-          <span>Flask</span>
-          <span>Full Stack</span>
-          <span>Git</span>
-        </div>
-      </div>
-
-      <!-- HR Analytics -->
-      <div class="project-card">
-        <h3>Workforce Intelligence – HR Analytics System</h3>
-        <p>Final year data science project focused on employee attrition prediction using machine learning, explainable AI (SHAP), and fairness evaluation.</p>
-        <div class="tags">
-          <span>Python</span>
-          <span>Machine Learning</span>
-          <span>Data Science</span>
-        </div>
-      </div>
-
-      <!-- Stock Prediction -->
-      <div class="project-card">
-        <h3>Stock Market Prediction System</h3>
-        <p>Machine learning forecasting system using financial time-series data combined with external economic indicators for improved prediction accuracy.</p>
-        <div class="tags">
-          <span>Python</span>
-          <span>ML</span>
-          <span>Data Analysis</span>
-        </div>
+      <div class="skills-right reveal">
+        <img src="skills.png" alt="Code screenshot" />
       </div>
 
     </div>
+  </section>
 
-    <div class="projects-footer">
-      <a href="https://github.com/esnotme"
-       target="_blank"
-       class="btn-primary">
-       View More on GitHub →
-    </a>
-</div>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label">Projects</p>
+      <h2 class="section-title">What I've built</h2>
 
-  </div>
-</section>
- 
+      <!-- FILTER TABS -->
+      <div class="filter-tabs" id="filterTabs">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="data">Data / ML</button>
+        <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+
+        <div class="project-card reveal" data-category="web">
+          <div class="project-card-top">
+            <span class="project-badge">Web</span>
+          </div>
+          <h3>Loan Application Form</h3>
+          <p>Built the frontend of an 8-step loan application form with structured multi-step navigation and validation-ready UI flow.</p>
+          <div class="tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/esnotme" target="_blank" rel="noopener noreferrer" class="project-link">GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-category="fullstack">
+          <div class="project-card-top">
+            <span class="project-badge">Full Stack</span>
+          </div>
+          <h3>Student Incentive &amp; Volunteer Tracking</h3>
+          <p>Full-stack team project — led development of a system tracking volunteer hours, reward points, and student milestones with a Python Flask backend and REST APIs.</p>
+          <div class="tags">
+            <span>Python</span><span>Flask</span><span>Full Stack</span><span>Git</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/esnotme" target="_blank" rel="noopener noreferrer" class="project-link">GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-category="data">
+          <div class="project-card-top">
+            <span class="project-badge">Data / ML</span>
+          </div>
+          <h3>Workforce Intelligence – HR Analytics</h3>
+          <p>Final year data science project on employee attrition prediction using machine learning, explainable AI (SHAP), and fairness evaluation.</p>
+          <div class="tags">
+            <span>Python</span><span>Machine Learning</span><span>Data Science</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/esnotme" target="_blank" rel="noopener noreferrer" class="project-link">GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-category="data">
+          <div class="project-card-top">
+            <span class="project-badge">Data / ML</span>
+          </div>
+          <h3>Stock Market Prediction System</h3>
+          <p>Machine learning forecasting system using financial time-series data combined with external economic indicators for improved prediction accuracy.</p>
+          <div class="tags">
+            <span>Python</span><span>ML</span><span>Data Analysis</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/esnotme" target="_blank" rel="noopener noreferrer" class="project-link">GitHub →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="projects-footer">
+        <a href="https://github.com/esnotme" target="_blank" rel="noopener noreferrer" class="btn-primary">View More on GitHub →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <div class="section-inner">
       <p class="section-label">Contact</p>
       <h2 class="section-title">Get in touch</h2>
-      <div class="contact-grid">
+      <div class="contact-grid reveal">
         <div class="contact-left">
           <p>I'm open to work or internship opportunities, feedback on my work, or just a conversation about tech.</p>
           <div class="contact-links">
-            <a href="mailto: shaniasiew14@gmail.com" class="contact-item">✉ shaniasiew14@gmail.com</a>
-            <a href="https://github.com/esnotme" target="_blank" class="contact-item">⌥ github.com/esnotme</a>
-            <a href="https://www.linkedin.com/in/shania-siew/" target="_blank" class="contact-item">◈ https://www.linkedin.com/in/shania-siew </a>
+            <a href="mailto:shaniasiew14@gmail.com" class="contact-item">✉ shaniasiew14@gmail.com</a>
+            <a href="https://github.com/esnotme" target="_blank" rel="noopener noreferrer" class="contact-item">⌥ github.com/esnotme</a>
+            <a href="https://www.linkedin.com/in/shania-siew/" target="_blank" rel="noopener noreferrer" class="contact-item">◈ linkedin.com/in/shania-siew</a>
           </div>
         </div>
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" />
+            <label for="fname">Name</label>
+            <input type="text" id="fname" name="name" placeholder="Your name" autocomplete="name" />
+            <span class="field-error" id="nameError"></span>
           </div>
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" />
+            <label for="femail">Email</label>
+            <input type="email" id="femail" name="email" placeholder="your@email.com" autocomplete="email" />
+            <span class="field-error" id="emailError"></span>
           </div>
           <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Say hello…"></textarea>
+            <label for="fmessage">Message</label>
+            <textarea id="fmessage" name="message" rows="4" placeholder="Say hello…"></textarea>
+            <span class="field-error" id="messageError"></span>
           </div>
           <button type="submit" class="btn-primary" id="submitBtn">Send Message</button>
           <p class="form-status" id="formStatus"></p>
@@ -252,12 +264,16 @@
       </div>
     </div>
   </section>
- 
+
+<button id="topBtn" class="top-btn">
+↑
+</button>
+
   <footer>
     <p>© 2026 Shania Siew — Built with HTML, CSS &amp; JavaScript</p>
   </footer>
- 
+
+
   <script src="script.js"></script>
 </body>
 </html>
- 
