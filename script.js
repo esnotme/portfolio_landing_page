@@ -15,30 +15,15 @@ function typeName() {
 }
 
 /* =============================================
-   PARALLAX BACKGROUND EFFECT
+   NAV: SCROLL BLUR + ACTIVE LINK
    ============================================= */
-
-const background = document.querySelector(".background-animation");
-
-window.addEventListener("scroll", () => {
-  if(background){
-    const scrollY = window.scrollY;
-    background.style.transform = `translateY(${scrollY * 0.15}px)`;
-  }
-});
-
-/* =============================================
-   NAV: SCROLL BLUR + ACTIVE LINK HIGHLIGHT
-   ============================================= */
-const nav     = document.getElementById("nav");
+const nav        = document.getElementById("nav");
 const navAnchors = document.querySelectorAll(".nav-links a");
 const sections   = document.querySelectorAll("section[id]");
 
 window.addEventListener("scroll", () => {
-  // blur nav on scroll
   nav.classList.toggle("scrolled", window.scrollY > 20);
 
-  // highlight active section in nav
   let current = "";
   sections.forEach(sec => {
     if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
@@ -54,10 +39,7 @@ window.addEventListener("scroll", () => {
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener("click", e => {
     const target = document.querySelector(a.getAttribute("href"));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: "smooth" }); }
   });
 });
 
@@ -84,11 +66,7 @@ function closeMenu() {
 if (menuToggle) menuToggle.addEventListener("click", openMenu);
 if (closeNav)   closeNav.addEventListener("click", closeMenu);
 if (navOverlay) navOverlay.addEventListener("click", closeMenu);
-
-// close on any nav link tap
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", closeMenu);
-});
+document.querySelectorAll(".nav-links a").forEach(l => l.addEventListener("click", closeMenu));
 
 /* =============================================
    THEME TOGGLE
@@ -97,7 +75,6 @@ const themeToggle = document.getElementById("themeToggle");
 const body        = document.body;
 
 if (themeToggle) {
-  // restore saved preference
   const saved = localStorage.getItem("theme");
   if (saved === "light") {
     body.classList.replace("dark", "light");
@@ -113,16 +90,15 @@ if (themeToggle) {
 }
 
 /* =============================================
-   SKILL BARS (scroll-triggered)
+   SKILL BARS
    ============================================= */
 const skillObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     entry.target.querySelectorAll(".skill-row").forEach((row, idx) => {
-      const fill  = row.querySelector(".skill-fill");
-      const pctEl = row.querySelector(".skill-pct");
+      const fill   = row.querySelector(".skill-fill");
+      const pctEl  = row.querySelector(".skill-pct");
       const target = parseInt(fill.dataset.target, 10);
-
       setTimeout(() => {
         fill.style.width = target + "%";
         if (pctEl) {
@@ -143,7 +119,7 @@ const skillList = document.querySelector(".skill-list");
 if (skillList) skillObserver.observe(skillList);
 
 /* =============================================
-   SCROLL REVEAL (.reveal elements)
+   SCROLL REVEAL
    ============================================= */
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -157,23 +133,19 @@ const revealObserver = new IntersectionObserver(entries => {
 document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 
 /* =============================================
-   PROJECT FILTER TABS
+   PROJECT FILTER
    ============================================= */
-const filterBtns  = document.querySelectorAll(".filter-btn");
+const filterBtns   = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
 
 filterBtns.forEach(btn => {
   btn.addEventListener("click", () => {
-    // update active tab
     filterBtns.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-
     const filter = btn.dataset.filter;
-
     projectCards.forEach(card => {
       const matches = filter === "all" || card.dataset.category === filter;
       card.classList.toggle("hidden", !matches);
-      // re-trigger reveal for cards that become visible
       if (matches) {
         card.classList.remove("visible");
         setTimeout(() => card.classList.add("visible"), 20);
@@ -199,23 +171,24 @@ if (resumeBtn) {
 }
 
 /* =============================================
-   CONTACT FORM — IMPROVED VALIDATION
+   CONTACT FORM VALIDATION
    ============================================= */
 const form      = document.getElementById("contactForm");
 const statusEl  = document.getElementById("formStatus");
 const submitBtn = document.getElementById("submitBtn");
 
 const rules = {
-  fname:    { el: null, err: null, check: v => v.trim().length >= 2,    msg: "Please enter your name (at least 2 characters)." },
+  fname:    { el: null, err: null, check: v => v.trim().length >= 2,                          msg: "Please enter your name (at least 2 characters)." },
   femail:   { el: null, err: null, check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), msg: "Please enter a valid email address." },
-  fmessage: { el: null, err: null, check: v => v.trim().length >= 10,   msg: "Message must be at least 10 characters." },
+  fmessage: { el: null, err: null, check: v => v.trim().length >= 10,                         msg: "Message must be at least 10 characters." },
 };
 
 if (form) {
-  // cache elements
   Object.keys(rules).forEach(id => {
     rules[id].el  = document.getElementById(id);
-    rules[id].err = document.getElementById(id === "fname" ? "nameError" : id === "femail" ? "emailError" : "messageError");
+    rules[id].err = document.getElementById(
+      id === "fname" ? "nameError" : id === "femail" ? "emailError" : "messageError"
+    );
   });
 
   function validateField(id) {
@@ -226,7 +199,6 @@ if (form) {
     return ok;
   }
 
-  // live validation on blur
   Object.keys(rules).forEach(id => {
     rules[id].el.addEventListener("blur",  () => validateField(id));
     rules[id].el.addEventListener("input", () => {
@@ -236,25 +208,32 @@ if (form) {
 
   form.addEventListener("submit", async e => {
     e.preventDefault();
-
-    // validate all fields
     const allOk = Object.keys(rules).map(id => validateField(id)).every(Boolean);
     if (!allOk) {
       statusEl.textContent = "Please fix the errors above.";
       statusEl.className = "form-status error";
       return;
     }
-
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending…";
-    statusEl.textContent  = "";
-    statusEl.className    = "form-status";
+    statusEl.textContent = "";
+    statusEl.className = "form-status";
 
-    // Simulated send — replace with Formspree or backend fetch
+const res = await fetch("https://formspree.io/f/maqryebv", {
+  method: "POST",
+  headers: { "Content-Type": "application/json", Accept: "application/json" },
+  body: JSON.stringify({
+    name:    rules.fname.el.value,
+    email:   rules.femail.el.value,
+    message: rules.fmessage.el.value
+  })
+});
+if (!res.ok) throw new Error("failed");
+
     await new Promise(r => setTimeout(r, 1300));
 
     statusEl.textContent = "✓ Message sent! I'll get back to you soon.";
-    statusEl.className   = "form-status success";
+    statusEl.className = "form-status success";
     form.reset();
     Object.keys(rules).forEach(id => {
       rules[id].el.classList.remove("error");
@@ -262,121 +241,77 @@ if (form) {
     });
 
     setTimeout(() => {
-      submitBtn.disabled    = false;
+      submitBtn.disabled = false;
       submitBtn.textContent = "Send Message";
-      statusEl.textContent  = "";
-      statusEl.className    = "form-status";
+      statusEl.textContent = "";
+      statusEl.className = "form-status";
     }, 4000);
   });
 }
 
 /* =============================================
+   BACK TO TOP
+   ============================================= */
+const topBtn = document.getElementById("topBtn");
+if (topBtn) {
+  window.addEventListener("scroll", () => {
+    topBtn.classList.toggle("show", window.scrollY > 500);
+  }, { passive: true });
+  topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+}
+
+/* =============================================
+   MOUSE TRAIL
+   ============================================= */
+const trailCanvas = document.getElementById("mouseTrail");
+if (trailCanvas) {
+  const trailCtx = trailCanvas.getContext("2d");
+
+  function resizeCanvas() {
+    trailCanvas.width  = window.innerWidth;
+    trailCanvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas, { passive: true });
+
+  let trail = [];
+
+  // disable on touch devices — it doesn't make sense there
+  const isTouchDevice = window.matchMedia("(hover: none)").matches;
+
+  if (!isTouchDevice) {
+    document.addEventListener("mousemove", e => {
+      trail.push({ x: e.clientX, y: e.clientY, size: 5, opacity: 0.5 });
+    });
+  }
+
+  function drawTrail() {
+    trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+    trail.forEach(point => {
+      trailCtx.beginPath();
+      trailCtx.arc(point.x, point.y, point.size, 0, Math.PI * 2);
+      trailCtx.fillStyle = `rgba(129,140,248,${point.opacity})`;
+      trailCtx.shadowBlur = 5;
+      trailCtx.shadowColor = "rgba(169,177,249,0.8)";
+      trailCtx.fill();
+      point.size    *= 0.92;
+      point.opacity *= 0.85;
+    });
+    trail = trail.filter(p => p.opacity > 0.03);
+    requestAnimationFrame(drawTrail);
+  }
+  drawTrail();
+}
+
+/* =============================================
+   PARALLAX BACKGROUND
+   ============================================= */
+const bgAnim = document.querySelector(".background-animation");
+window.addEventListener("scroll", () => {
+  if (bgAnim) bgAnim.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+}, { passive: true });
+
+/* =============================================
    INIT
    ============================================= */
 window.addEventListener("DOMContentLoaded", () => setTimeout(typeName, 300));
-
-/* =============================================
-   BACK TO TOP BUTTON
-   ============================================= */
-
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY > 500){
-topBtn.classList.add("show");
-}else{
-topBtn.classList.remove("show");
-}
-
-});
-
-
-topBtn.addEventListener("click",()=>{
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-});
-
-const trailCanvas = document.getElementById("mouseTrail");
-const trailCtx = trailCanvas.getContext("2d");
-
-trailCanvas.width = window.innerWidth;
-trailCanvas.height = window.innerHeight;
-
-
-window.addEventListener("resize", () => {
-  trailCanvas.width = window.innerWidth;
-  trailCanvas.height = window.innerHeight;
-});
-
-
-let trail = [];
-
-document.addEventListener("mousemove", (e) => {
-
-  trail.push({
-    x: e.clientX,
-    y: e.clientY,
-    size: 5,
-    opacity: 0.5
-  });
-
-});
-
-
-function drawTrail(){
-
-  trailCtx.clearRect(
-    0,
-    0,
-    trailCanvas.width,
-    trailCanvas.height
-  );
-
-
-  trail.forEach((point)=>{
-
-    trailCtx.beginPath();
-
-    trailCtx.arc(
-      point.x,
-      point.y,
-      point.size,
-      0,
-      Math.PI * 2
-    );
-
-
-    trailCtx.fillStyle =
-      `rgba(129,140,248,${point.opacity})`;
-
-
-    trailCtx.shadowBlur = 5;
-    trailCtx.shadowColor =
-      "rgba(169, 177, 249, 0.8)";
-
-
-    trailCtx.fill();
-
-
-    point.size *= 0.92;
-    point.opacity *= 0.85;
-
-  });
-
-
-  trail = trail.filter(
-    p => p.opacity > 0.03
-  );
-
-
-  requestAnimationFrame(drawTrail);
-
-}
-
-
-drawTrail();
